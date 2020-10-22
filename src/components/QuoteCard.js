@@ -1,20 +1,42 @@
-import React from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './QuoteCard.css';
 
-function QuoteCard () {
-    return(
-        <figure class="QuoteCard">
-            <img 
-              src="https://pm1.narvii.com/7070/aeaeadea89d89327a8e5f4f83d10272dc337425fr1-1200-1200v2_128.jpg"
-              alt="Nelson Muntz"></img>
-            <figcaption>
-                <blockquote>
-                Shoplifting is a victimless crime, like punching someone in the dark.
-                </blockquote>
-                <cite>Nelson Muntz</cite>
-            </figcaption>
-        </figure>
-    )
+class QuoteCard extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            favorite: false,
+        };
+    }
+    render() {
+        return(
+            <figure className="QuoteCard">
+                <img 
+                  src={this.props.image}
+                  alt={this.props.name}>
+                </img>
+                <figcaption>
+                    <blockquote>
+                    {this.props.quote}
+                    </blockquote>
+                    <p>
+                        <cite>{this.props.name}</cite>
+                        <span className={this.state.favorite ? 'is-favorite': ''} onClick = {event => {
+                            const newFavorite = !this.state.favorite;
+                           this.setState({favorite: newFavorite});
+                        }}>&#9733;</span>
+                    </p>
+                </figcaption>
+            </figure>
+        )
+    }
+    
 }
+
+QuoteCard.propTypes = {
+    name: PropTypes.string.isRequired
+};
 
 export default QuoteCard;
