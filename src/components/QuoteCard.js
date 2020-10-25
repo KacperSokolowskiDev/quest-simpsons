@@ -1,6 +1,29 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+// import React, {Component} from 'react';
+import React from 'react';
 import './QuoteCard.css';
+
+// React Challenge 7 (API)
+
+function QuoteCard({simpsonQuote}) {
+    return(
+        <figure className="QuoteCard">
+                 <img 
+                   src={simpsonQuote.image}
+                   alt={simpsonQuote.character}
+                 />
+                 <figcaption>
+                     <blockquote>
+                        {simpsonQuote.quote}
+                     </blockquote>
+                     <p>
+                        <cite>{simpsonQuote.character}</cite>
+                     </p>
+                 </figcaption>
+        </figure>
+    )
+}
+
+/*React Challenge (Adding a quote to favorites)
 
 class QuoteCard extends Component {
     constructor(props){
@@ -33,10 +56,6 @@ class QuoteCard extends Component {
         )
     }
     
-}
-
-QuoteCard.propTypes = {
-    name: PropTypes.string.isRequired
-};
+}*/
 
 export default QuoteCard;
